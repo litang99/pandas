@@ -2,10 +2,10 @@ import numpy as np
 
 import pandas as pd
 
-# print("Pandas version:", pd.__version__)
+print("Pandas version:", pd.__version__)
 
 
-def test():
+def test_to_pydatetime():
     # Create a sample DataFrame
     df = pd.DataFrame(
         {
@@ -29,5 +29,12 @@ def test():
     df.info()
 
 
+def test_dtype_change():
+    s = pd.Series([10, 20, 30], index=list("abc"), dtype=np.uint8)
+    s.loc["a":"b"] = [100, 200]
+    # print(s.dtype)
+
+
 if __name__ == "__main__":
-    test()
+    # test_to_pydatetime()
+    test_dtype_change()
