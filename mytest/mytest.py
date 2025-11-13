@@ -30,11 +30,11 @@ def test_to_pydatetime():
 
 
 def test_dtype_change():
-    s = pd.Series([10, 20, 30], index=list("abc"))
+    s = pd.Series([10, 20, 30], index=list("abc"), dtype=np.uint16)
     s1 = pd.Series([100, 200], index=list("ab"), dtype=np.uint8)
     print(s.dtype)
     print(s1.dtype)
-    s.loc["a":"b"] = [100, 200]
+    s.loc["a":"b"] = np.array([100, 200], dtype=np.uint8)
     print(s.dtype)
 
 
