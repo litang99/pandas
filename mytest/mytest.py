@@ -30,9 +30,12 @@ def test_to_pydatetime():
 
 
 def test_dtype_change():
-    s = pd.Series([10, 20, 30], index=list("abc"), dtype=np.uint8)
+    s = pd.Series([10, 20, 30], index=list("abc"))
+    s1 = pd.Series([100, 200], index=list("ab"), dtype=np.uint8)
+    print(s.dtype)
+    print(s1.dtype)
     s.loc["a":"b"] = [100, 200]
-    # print(s.dtype)
+    print(s.dtype)
 
 
 if __name__ == "__main__":
