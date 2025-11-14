@@ -38,6 +38,37 @@ def test_dtype_change():
     print(s.dtype)
 
 
+def test_multi_indexes():
+    # wrong behavior whenever slice is used
+    # My best guess is that ideally, the code that maps a (tuple of) key(s)
+    # to one or more positions and the code that determines what will
+    # the new index be should all be MultiIndex or _LocationIndexer
+    # (not Series or DataFrame) code.
+    df = pd.DataFrame(np.arange(20).reshape((4, 5))).set_index([0, 1, 2])
+    print(df)
+    # print(df.loc[(slice(None), 1,), :].index) # wrong output
+    # print(df[3].loc[(slice(None), 1,)].index) # correct output
+    # print(df.loc[(0,), :].index) # correct output
+    print("== A ==")
+    df.loc[(0, 1), :]  # correct output
+    print("== B ==")
+    df.loc[
+        (
+            slice(0, 5),
+            6,
+        ),
+        :,
+    ]  # wrong output
+    print("== C ==")
+    df[3].loc[
+        (
+            slice(None),
+            1,
+        )
+    ]  # correct output
+
+
 if __name__ == "__main__":
     # test_to_pydatetime()
-    test_dtype_change()
+    # test_dtype_change()
+    test_multi_indexes()
