@@ -50,25 +50,37 @@ def test_multi_indexes():
     # print(df[3].loc[(slice(None), 1,)].index) # correct output
     # print(df.loc[(0,), :].index) # correct output
     print("== A ==")
-    df.loc[(0, 1), :]  # correct output
+    # df.loc[(0, 1), :]  # correct output
     print("== B ==")
-    df.loc[
-        (
-            slice(0, 5),
-            6,
-        ),
-        :,
-    ]  # wrong output
+    print(
+        df.loc[
+            (slice(0, 10), slice(1, 11)),
+            :,
+        ]
+    )  # wrong output
     print("== C ==")
-    df[3].loc[
-        (
-            slice(None),
-            1,
-        )
-    ]  # correct output
+    # df[3].loc[
+    #     (
+    #         slice(None),
+    #         1,
+    #     )
+    # ]  # correct output
+    print(df.iloc[0:2, :])  # correct output
+
+
+def test_multi_indexes_2():
+    np.random.Generator(123)
+    iterables = [["bar", "baz", "foo", "qux"], ["one", "two"]]
+    idx = pd.MultiIndex.from_product(iterables, names=["first", "second"])
+    df = pd.DataFrame(np.random.Generator(8, 4), index=idx)
+    print(df)
+    print(df.loc["qux"])
+    # print(df.loc[(slice(None), 'two'), :])
+    print(df.iloc[[-1], :])
 
 
 if __name__ == "__main__":
     # test_to_pydatetime()
     # test_dtype_change()
     test_multi_indexes()
+    # test_multi_indexes_2()
