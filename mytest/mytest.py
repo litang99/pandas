@@ -28,6 +28,8 @@ def test_to_pydatetime():
     print("\nDataFrame after converting datetime to numpy array of pydatetime:\n", df)
     df.info()
 
+    print(df["datetime"].dtype)
+
 
 def test_dtype_change():
     s = pd.Series([10, 20, 30], index=list("abc"), dtype=np.uint16)
