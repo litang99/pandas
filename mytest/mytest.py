@@ -80,7 +80,7 @@ def test_multi_indexes_2():
 
 
 if __name__ == "__main__":
-    # test_to_pydatetime()
+    test_to_pydatetime()
     # test_dtype_change()
-    test_multi_indexes()
+    # test_multi_indexes()
     # test_multi_indexes_2()
