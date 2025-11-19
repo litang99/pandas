@@ -54,7 +54,7 @@ def test_multi_indexes():
     print("== B ==")
     print(
         df.loc[
-            (slice(0, 10), slice(1, 11)),
+            (slice(0, 15), slice(6, 11)),
             :,
         ]
     )  # wrong output
