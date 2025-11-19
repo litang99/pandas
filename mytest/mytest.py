@@ -23,12 +23,13 @@ def test_to_pydatetime():
 
     df["datetime"] = np.array(df.datet.dt.to_pydatetime())
     print("2")
-    # df["datetime1"] = np.array(df.datet.dt.astype(datetime))
+    df["datetime1"] = df.datet.dt.to_pydatetime()
 
     print("\nDataFrame after converting datetime to numpy array of pydatetime:\n", df)
     df.info()
 
     print(df["datetime"].dtype)
+    print(df["datetime1"].dtype)
 
 
 def test_dtype_change():
